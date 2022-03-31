@@ -38,7 +38,7 @@ const getFullPrice = function (fullPrice1, fullPrice2) {
 };
 
 const getTitle = function (txt) {
-    if (!txt) {
+    if (!txt || !txt.trim()) {
         return txt;
     }        
 
