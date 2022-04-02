@@ -31,7 +31,7 @@ const isNumber = function(num) {
 };
 
 const asking = function () {
-    title = prompt('Как называется ваш проект?',);
+    title = prompt('Как называется ваш проект?');
     screens = prompt('Какие типы экранов нужно разработать?');
 
     do {
