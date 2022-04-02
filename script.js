@@ -27,6 +27,10 @@ const getTitle = function (txt) {
 
 
 const isNumber = function(num) {
+    if (num !== null && num.length > num.trim().length) {
+        return false;
+    }
+    
     return !isNaN(parseFloat(num)) && isFinite(num);
 };
 
