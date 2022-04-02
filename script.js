@@ -38,8 +38,6 @@ const asking = function () {
         screenPrice = prompt('Сколько будет стоить данная работа?');
     } while (!isNumber(screenPrice));
 
-    console.log(screenPrice);
-
     adaptive = confirm('Нужен ли адаптив на сайте?');
 
     showTypeOf(getTitle(title));
