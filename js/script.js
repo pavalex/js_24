@@ -8,11 +8,11 @@ const percent = document.querySelectorAll('.other-items + .percent');
 const number = document.querySelectorAll('.other-items + .number');
 const range = document.querySelector('.rollback input[type=range]');
 const rangeValue = document.querySelector('.rollback .range-value');
-const totalInput = document.getElementsByClassName('total-input')[0];
-const totalInput1 = document.getElementsByClassName('total-input')[1];
-const totalInput2 = document.getElementsByClassName('total-input')[2];
-const totalInput3 = document.getElementsByClassName('total-input')[3];
-const totalInput4 = document.getElementsByClassName('total-input')[4];
+const costLayout = document.getElementsByClassName('total-input')[0];
+const screensQuantity = document.getElementsByClassName('total-input')[1];
+const costAdditional = document.getElementsByClassName('total-input')[2];
+const totalCost = document.getElementsByClassName('total-input')[3];
+const costRollback = document.getElementsByClassName('total-input')[4];
 const allScreen = document.querySelectorAll('.screen');
 
 const appData = {
