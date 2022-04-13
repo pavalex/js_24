@@ -13,7 +13,7 @@ const screensQuantity = document.getElementsByClassName('total-input')[1];
 const costAdditional = document.getElementsByClassName('total-input')[2];
 const totalCost = document.getElementsByClassName('total-input')[3];
 const costRollback = document.getElementsByClassName('total-input')[4];
-let allScreen = document.querySelectorAll('.screen');
+let allScreen = document.getElementsByClassName('screen');
 
 const appData = {
     title: '',
@@ -82,7 +82,7 @@ const appData = {
             });
 
         });
-              
+         console.log(appData.screens);     
     },
     addServices: function () {
         percent.forEach(function (item) {
@@ -107,7 +107,9 @@ const appData = {
     },
     addScreenBlock: function () {
         const cloneScreen = allScreen[0].cloneNode(true);
-        allScreen[allScreen.length - 1].after(cloneScreen);
+        allScreen[allScreen.length-1].after(cloneScreen);  
+        const cloneInput = cloneScreen.querySelector('input');
+        cloneInput.value = '';
     },
     addRollBack: function () {
         range.addEventListener('input', function () {
