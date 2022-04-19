@@ -28,7 +28,6 @@ const appData = {
     adaptive: true,
     servicePricesPercent: 0,
     servicePricesNumber: 0,
-    cmsPrice: 0,
     fullPrice: 0,
     servicePercentPrice: 0,
     servicesPercent: {},
@@ -36,12 +35,11 @@ const appData = {
     init: function () {
         this.addTitle();
         this.addRollBack();
-
-        calculate.addEventListener('click', this.calculateInit);
-        reset.addEventListener('click', this.resetInit);
-        plusButton.addEventListener('click', this.addScreenBlock);
-        customCheckbox.addEventListener('change', this.cmsInit);
-        viewsSelect.addEventListener('change', this.addCmsVariants);
+        calculate.addEventListener('click', this.calculateInit.bind(appData));
+        reset.addEventListener('click', this.resetInit.bind(appData));
+        plusButton.addEventListener('click', this.addScreenBlock.bind(appData));
+        customCheckbox.addEventListener('change', this.cmsInit.bind(appData));
+        viewsSelect.addEventListener('change', this.addCmsVariants.bind(appData));
     },
     addTitle: function () {
         document.title = headerTitle.textContent;
@@ -128,9 +126,7 @@ const appData = {
         hiddenCmsVariants.style.display = 'flex';
     },
     addCmsVariants: function () {
-
         if (viewsSelect.value === 'other') {
-            console.log('yes');
             otherInput.style.display = 'flex';
         } else {
             otherInput.style.display = 'none';
@@ -165,12 +161,9 @@ const appData = {
             inputs.forEach(input => input.disabled = true);
             selects.forEach(select => select.disabled = true);
             checkboxes.forEach(checkbox => checkbox.disabled = true);
-            range.disabled = true;
             customCheckbox.disabled = true;
-            plusButton.disabled = true;
-            appData.start();
+            this.start();
         }
-
     },
     resetInit: function () {
             const screens = [...document.querySelectorAll('.main-controls__item.screen')];
@@ -207,10 +200,20 @@ const appData = {
             costRollback.value = '';
             screensQuantity.value = '';
             optionOther.value = '';
+            viewsSelect.value = '';
 
             for (let i = 0; i < screens.length-1; i++) {
                 screens[i].remove();
             }
+
+            this.screens.splice(0, this.screens.length);
+            this.rollBack = 0;
+
+            this.servicePricesPercent = 0;
+            this.servicePricesNumber = 0;
+
+            this.servicesPercent = {};
+            this.servicesNumber = {};
 
             hiddenCmsVariants.style.display = 'none';
     },
