@@ -35,11 +35,11 @@ const appData = {
     init: function () {
         this.addTitle();
         this.addRollBack();
-        calculate.addEventListener('click', this.calculateInit.bind(appData));
-        reset.addEventListener('click', this.resetInit.bind(appData));
-        plusButton.addEventListener('click', this.addScreenBlock.bind(appData));
-        customCheckbox.addEventListener('change', this.cmsInit.bind(appData));
-        viewsSelect.addEventListener('change', this.addCmsVariants.bind(appData));
+        calculate.addEventListener('click', this.calculateInit.bind(this));
+        reset.addEventListener('click', this.resetInit.bind(this));
+        plusButton.addEventListener('click', this.addScreenBlock.bind(this));
+        customCheckbox.addEventListener('change', this.cmsInit.bind(this));
+        viewsSelect.addEventListener('change', this.addCmsVariants.bind(this));
     },
     addTitle: function () {
         document.title = headerTitle.textContent;
@@ -85,15 +85,15 @@ const appData = {
         reset.style.display = 'flex';
     }, 
     addScreens: function () {        
-        allScreen = document.querySelectorAll('.screen');
+        const screens = document.querySelectorAll('.screen');
 
-        allScreen.forEach((screen, index) => {
+        screens.forEach((screen, index) => {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
             const selectName = select.options[select.selectedIndex].textContent;
 
             this.screens.push({
-                id: index, 
+                id: index,
                 name: selectName,
                 price: +select.value * +input.value,
                 count: input.value
@@ -134,7 +134,7 @@ const appData = {
     },
     addScreenBlock: function () {
         const cloneScreen = allScreen[0].cloneNode(true);
-        allScreen[allScreen.length-1].after(cloneScreen);  
+        allScreen[allScreen.length-1].after(cloneScreen);
         const cloneInput = cloneScreen.querySelector('input');
         cloneInput.value = '';
     },
