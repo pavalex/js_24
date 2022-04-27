@@ -123,7 +123,12 @@ const appData = {
         });
     },
     cmsInit: function () {
-        hiddenCmsVariants.style.display = 'flex';
+        if (customCheckbox.checked) {
+            hiddenCmsVariants.style.display = 'flex';
+        } else {
+            hiddenCmsVariants.style.display = 'none';
+        }
+
     },
     addCmsVariants: function () {
         if (viewsSelect.value === 'other') {
@@ -208,14 +213,17 @@ const appData = {
 
             this.screens.splice(0, this.screens.length);
             this.rollBack = 0;
+            this.fullPrice = 0;
 
             this.servicePricesPercent = 0;
             this.servicePricesNumber = 0;
+            this.servicePercentPrice = 0;
 
             this.servicesPercent = {};
             this.servicesNumber = {};
 
             hiddenCmsVariants.style.display = 'none';
+            otherInput.style.display = 'none';
     },
     start: function () {
         this.addScreens();
